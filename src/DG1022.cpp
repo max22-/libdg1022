@@ -1,4 +1,4 @@
-#include "DG1022.h"
+#include <DG1022.h>
 #include <fstream>
 
 DG1022::DG1022(std::string device)
