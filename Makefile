@@ -14,7 +14,7 @@ install: lib/libdg1022.so
 	cp lib/libdg1022.so /usr/lib
 
 uninstall:
-	rm /usr/lib/libdg1022.so
+	rm -f /usr/lib/libdg1022.so
 
 clean:
 	rm -f lib/*
