@@ -7,6 +7,8 @@ DG1022::DG1022(std::string device)
 {
     this->device = device;
     file.open(this->device, std::ios::in | std::ios::out);
+    if(!file)
+        throw std::runtime_error("Cannot open device.");
 }
 
 DG1022::~DG1022() {
