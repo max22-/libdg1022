@@ -23,7 +23,7 @@ public:
 private:
     void write(std::string line);
     std::string device;
-    std::ofstream file;
+    std::fstream file;
 };
 
 #endif // DG1022_H

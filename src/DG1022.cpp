@@ -1,14 +1,16 @@
 #include <DG1022.h>
 #include <fstream>
+#include <chrono>
+#include <thread>
 
 DG1022::DG1022(std::string device)
 {
     this->device = device;
-    std::ofstream file;
-    file.open(device, std::ios::out);
+    file.open(this->device, std::ios::in | std::ios::out);
 }
 
 DG1022::~DG1022() {
+    std::cout << "Closing device " << device << std::endl;
     file.close();
 }
 
@@ -46,5 +48,8 @@ void DG1022::setPhase(float p, Channel chan) {
 }
 
 void DG1022::write(std::string line) {
+    std::cout << "Writing..." << std::endl;
     file << line << std::endl;
+    std::cout << line << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
