@@ -13,7 +13,8 @@ class DG1022
 public:
     DG1022(std::string device);
     ~DG1022();
-    void setOutput(OutputState onOff, Channel chan = Channel::CHANNEL1);
+    void setOutputOn(Channel chan = Channel::CHANNEL1);
+    void setOutputOff(Channel chan = Channel::CHANNEL1);
     void setFrequency(float f, Channel chan = Channel::CHANNEL1);
     void setWaveForm(WaveForm f, Channel chan = Channel::CHANNEL1);
     void setVoltage(float v, Channel chan = Channel::CHANNEL1);

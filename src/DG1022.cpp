@@ -16,21 +16,18 @@ DG1022::~DG1022() {
     file.close();
 }
 
-void DG1022::setOutput(OutputState onOff, Channel chan) {
-    switch (onOff) {
-        case OutputState::ON:
-            if(chan == Channel::CHANNEL1)
-                write("OUTP ON");
-            else if (chan == Channel::CHANNEL2)
-                write("OUTP:CH2 ON");
-            break;
-        case OutputState::OFF:
-            if(chan == Channel::CHANNEL1)
-                write("OUTP ON");
-            else if (chan == Channel::CHANNEL2)
-                write("OUTP:CH2 ON");
-            break;
-    }
+void DG1022::setOutputOn(Channel chan) {
+    if(chan == Channel::CHANNEL1)
+        write("OUTP ON");
+    else if (chan == Channel::CHANNEL2)
+        write("OUTP:CH2 ON");
+}
+
+void DG1022::setOutputOff(Channel chan) {
+    if(chan == Channel::CHANNEL1)
+        write("OUTP ON");
+    else if (chan == Channel::CHANNEL2)
+        write("OUTP:CH2 ON");
 }
 
 void DG1022::setFrequency(float f, Channel chan) {

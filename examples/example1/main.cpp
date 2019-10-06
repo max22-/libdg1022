@@ -7,6 +7,6 @@ int main()
 {
     cout << "Hello World!" << endl;
     DG1022 gen("/dev/usbtmc0");
-    gen.setOutput(OutputState::ON);
+    gen.setOutputOn();
     return 0;
 }
