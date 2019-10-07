@@ -2,7 +2,7 @@
 #define DG1022_H
 
 #include <iostream>
-#include <fstream>
+#include "devicestream.h"
 
 enum class WaveForm { SINUSOID, SQUARE, RAMP, PULSE, NOISE, DC };
 enum class Channel { CHANNEL1, CHANNEL2 };
@@ -20,11 +20,11 @@ public:
     void setVoltage(float v, Channel chan = Channel::CHANNEL1);
     void setPhase(float p, Channel chan = Channel::CHANNEL1);
 
+    static void sleep(int ms);
 
 private:
-    void write(std::string line);
     std::string device;
-    std::fstream file;
+    DeviceStream dstream;
 };
 
 #endif // DG1022_H

@@ -4,3 +4,5 @@ examples/example1/Makefile
 examples/example1/main.cpp
 include/DG1022.h
 src/DG1022.cpp
+src/devicestream.cpp
+src/devicestream.h

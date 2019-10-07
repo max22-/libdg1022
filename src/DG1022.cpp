@@ -3,35 +3,35 @@
 #include <chrono>
 #include <thread>
 
-DG1022::DG1022(std::string device)
+DG1022::DG1022(std::string device) : dstream(device)
 {
     this->device = device;
-    file.open(this->device, std::ios::in | std::ios::out);
-    if(!file)
-        throw std::runtime_error("Cannot open device.");
 }
 
 DG1022::~DG1022() {
     std::cout << "Closing device " << device << std::endl;
-    file.close();
 }
 
 void DG1022::setOutputOn(Channel chan) {
     if(chan == Channel::CHANNEL1)
-        write("OUTP ON");
+        dstream << "OUTP ON" << DeviceStream::endl;
     else if (chan == Channel::CHANNEL2)
-        write("OUTP:CH2 ON");
+        dstream << "OUTP:CH2 ON" << DeviceStream::endl;
 }
 
 void DG1022::setOutputOff(Channel chan) {
     if(chan == Channel::CHANNEL1)
-        write("OUTP ON");
+        dstream << "OUTP OFF" << DeviceStream::endl;
     else if (chan == Channel::CHANNEL2)
-        write("OUTP:CH2 ON");
+        dstream << "OUTP:CH2 OFF" << DeviceStream::endl;
 }
 
 void DG1022::setFrequency(float f, Channel chan) {
-
+    if(chan == Channel::CHANNEL1) {
+        dstream << "FREQ " << f << DeviceStream::endl;
+    }
+    else if (chan == Channel::CHANNEL2)
+        dstream << "FREQ:CH2 " << f << DeviceStream::endl;
 }
 
 void DG1022::setWaveForm(WaveForm f, Channel chan) {
@@ -46,9 +46,6 @@ void DG1022::setPhase(float p, Channel chan) {
 
 }
 
-void DG1022::write(std::string line) {
-    std::cout << "Writing..." << std::endl;
-    file << line << std::endl;
-    std::cout << line << std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+void DG1022::sleep(int ms) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
