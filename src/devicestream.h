@@ -12,14 +12,16 @@ public:
     ~DeviceStream();
     DeviceStream& operator<<(std::string);
     DeviceStream& operator<<(float);
-    DeviceStream& operator<<(void (*pf)());
+    DeviceStream& operator<<(DeviceStream& (*pf)(DeviceStream&));
 
-    static void endl();
+    friend DeviceStream& endl(DeviceStream&);
 
 private:
     std::string device;
     std::fstream file;
     std::stringstream buffer;
 };
+
+DeviceStream& endl(DeviceStream&);
 
 #endif // DEVICESTREAM_H

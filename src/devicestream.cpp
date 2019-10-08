@@ -25,11 +25,13 @@ DeviceStream& DeviceStream::operator<<(const float f) {
     return *this;
 }
 
-DeviceStream& DeviceStream::operator<<(void (*pf)()) {
-    file << buffer.str() << std::endl;
-    buffer.str("");
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    return *this;
+DeviceStream& DeviceStream::operator<<(DeviceStream& (*pf)(DeviceStream&)) {
+    return pf(*this);
 }
 
-void DeviceStream::endl() {}
+DeviceStream& endl(DeviceStream& dstrm) {
+    dstrm.file << dstrm.buffer.str() << std::endl;
+    dstrm.buffer.str("");
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    return dstrm;
+}

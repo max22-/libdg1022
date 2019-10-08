@@ -14,24 +14,24 @@ DG1022::~DG1022() {
 
 void DG1022::setOutputOn(Channel chan) {
     if(chan == Channel::CHANNEL1)
-        dstream << "OUTP ON" << DeviceStream::endl;
+        dstream << "OUTP ON" << endl;
     else if (chan == Channel::CHANNEL2)
-        dstream << "OUTP:CH2 ON" << DeviceStream::endl;
+        dstream << "OUTP:CH2 ON" << endl;
 }
 
 void DG1022::setOutputOff(Channel chan) {
     if(chan == Channel::CHANNEL1)
-        dstream << "OUTP OFF" << DeviceStream::endl;
+        dstream << "OUTP OFF" << endl;
     else if (chan == Channel::CHANNEL2)
-        dstream << "OUTP:CH2 OFF" << DeviceStream::endl;
+        dstream << "OUTP:CH2 OFF" << endl;
 }
 
 void DG1022::setFrequency(float f, Channel chan) {
     if(chan == Channel::CHANNEL1) {
-        dstream << "FREQ " << f << DeviceStream::endl;
+        dstream << "FREQ " << f << endl;
     }
     else if (chan == Channel::CHANNEL2)
-        dstream << "FREQ:CH2 " << f << DeviceStream::endl;
+        dstream << "FREQ:CH2 " << f << endl;
 }
 
 void DG1022::setWaveForm(WaveForm f, Channel chan) {
