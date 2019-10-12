@@ -29,9 +29,8 @@ DG1022& DG1022::setOutputOff(Channel chan) {
 }
 
 DG1022& DG1022::setFrequency(float f, Channel chan) {
-    if(chan == Channel::CHANNEL1) {
+    if(chan == Channel::CHANNEL1)
         dstream << "FREQ " << f << endl;
-    }
     else if (chan == Channel::CHANNEL2)
         dstream << "FREQ:CH2 " << f << endl;
     return *this;
