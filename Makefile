@@ -10,7 +10,7 @@ lib/libdg1022.o: include/DG1022.h src/DG1022.cpp
 lib/devicestream.o: src/devicestream.h src/devicestream.cpp
 	gcc -c -fPIC -Isrc -Wall src/devicestream.cpp -o lib/devicestream.o
 
-examples:
+examples: lib/libdg1022.so
 	$(MAKE) -C examples
 
 install: lib/libdg1022.so
