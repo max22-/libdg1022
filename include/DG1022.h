@@ -3,20 +3,17 @@
 
 #include <iostream>
 #include "devicestream.h"
+#include "enums.h"
 
-enum class WaveForm { SINUSOID, SQUARE, RAMP, PULSE, NOISE, DC };
-enum class Channel { CHANNEL1, CHANNEL2 };
-enum class OutputState {ON, OFF};
 
 class DG1022
 {
 public:
     DG1022(std::string device);
     ~DG1022();
-    DG1022& setOutputOn(Channel chan = Channel::CHANNEL1);
-    DG1022& setOutputOff(Channel chan = Channel::CHANNEL1);
+    DG1022& setOutput(OutputState os, Channel chan = Channel::CHANNEL1);
     DG1022& setFrequency(float f, Channel chan = Channel::CHANNEL1);
-    DG1022& setWaveForm(WaveForm f, Channel chan = Channel::CHANNEL1);
+    DG1022& setWaveForm(WaveForm wf, Channel chan = Channel::CHANNEL1);
     DG1022& setVoltage(float v, Channel chan = Channel::CHANNEL1);
     DG1022& setPhase(float p, Channel chan = Channel::CHANNEL1);
 

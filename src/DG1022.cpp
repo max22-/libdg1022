@@ -12,32 +12,18 @@ DG1022::~DG1022() {
     std::cout << "Closing device " << device << std::endl;
 }
 
-DG1022& DG1022::setOutputOn(Channel chan) {
-    if(chan == Channel::CHANNEL1)
-        dstream << "OUTP ON" << endl;
-    else if (chan == Channel::CHANNEL2)
-        dstream << "OUTP:CH2 ON" << endl;
-    return *this;
-}
-
-DG1022& DG1022::setOutputOff(Channel chan) {
-    if(chan == Channel::CHANNEL1)
-        dstream << "OUTP OFF" << endl;
-    else if (chan == Channel::CHANNEL2)
-        dstream << "OUTP:CH2 OFF" << endl;
+DG1022& DG1022::setOutput(OutputState os, Channel chan) {
+    dstream << "OUTP" << chan << " " << os << endl;
     return *this;
 }
 
 DG1022& DG1022::setFrequency(float f, Channel chan) {
-    if(chan == Channel::CHANNEL1)
-        dstream << "FREQ " << f << endl;
-    else if (chan == Channel::CHANNEL2)
-        dstream << "FREQ:CH2 " << f << endl;
+    dstream << "FREQ" << chan << " " << f << endl;
     return *this;
 }
 
-DG1022& DG1022::setWaveForm(WaveForm f, Channel chan) {
-
+DG1022& DG1022::setWaveForm(WaveForm wf, Channel chan) {
+    dstream << "FUNC" << chan << " " << wf << endl;
     return *this;
 }
 
