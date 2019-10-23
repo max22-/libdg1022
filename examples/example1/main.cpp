@@ -8,6 +8,8 @@ int main()
     cout << "Hello World!" << endl;
     DG1022 gen("/dev/usbtmc0");
     gen.setFrequency(440)
+        .setVoltage(4.5)
+        .setPhase(45.1)
         .setOutput(OutputState::ON)
         .sleep(2000)
         .setOutput(OutputState::OFF)

@@ -79,10 +79,34 @@ DeviceStream& DeviceStream::operator<<(DeviceStream& (*pf)(DeviceStream&)) {
     return pf(*this);
 }
 
+template<typename T>
+DeviceStream& DeviceStream::operator<<(smanip<T> m) {
+    return m.manipulate(*this);
+}
+
 DeviceStream& endl(DeviceStream& dstrm) {
     std::cout << dstrm.buffer.str() << std::endl;
     dstrm.file << dstrm.buffer.str() << std::endl;
     dstrm.buffer.str("");
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    dstrm << setprecision(6);
     return dstrm;
+}
+
+template <typename T>
+smanip<T>::smanip(DeviceStream& (*pf)(DeviceStream&, T), T arg) : pf(pf), arg(arg) {
+}
+
+template <typename T>
+DeviceStream & smanip<T>::manipulate(DeviceStream& strm) {
+    return pf(strm, arg);
+}
+
+DeviceStream& sprec_(DeviceStream& strm, int p) {
+    strm.buffer << std::setprecision(p);
+    return strm;
+}
+
+smanip<int> setprecision(int p) {
+    return smanip<int>(sprec_, p);
 }

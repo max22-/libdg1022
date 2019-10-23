@@ -28,12 +28,12 @@ DG1022& DG1022::setWaveForm(WaveForm wf, Channel chan) {
 }
 
 DG1022& DG1022::setVoltage(float v, Channel chan) {
-
+    dstream << setprecision(3) << "VOLT" << chan << " " << v << endl;
     return *this;
 }
 
 DG1022& DG1022::setPhase(float p, Channel chan) {
-
+    dstream << setprecision(1) << "PHAS" << chan << " " << p << endl;
     return *this;
 }
 
