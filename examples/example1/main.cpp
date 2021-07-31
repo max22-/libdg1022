@@ -1,5 +1,5 @@
 #include <iostream>
-#include <DG1022.h>
+#include <DG1022/DG1022.h>
 
 using namespace std;
 

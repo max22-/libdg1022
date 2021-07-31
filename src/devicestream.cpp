@@ -1,4 +1,4 @@
-#include "devicestream.h"
+#include <DG1022/devicestream.h>
 #include <iomanip>
 #include <chrono>
 #include <thread>

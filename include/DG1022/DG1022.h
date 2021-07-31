@@ -2,8 +2,8 @@
 #define DG1022_H
 
 #include <iostream>
-#include "devicestream.h"
-#include "enums.h"
+#include <DG1022/devicestream.h>
+#include <DG1022/enums.h>
 
 
 class DG1022

@@ -1,4 +1,4 @@
-#include <DG1022.h>
+#include <DG1022/DG1022.h>
 #include <fstream>
 #include <chrono>
 #include <thread>
@@ -33,7 +33,7 @@ DG1022& DG1022::setVoltage(float v, Channel chan) {
 }
 
 DG1022& DG1022::setOffset(float o, Channel chan) {
-    dstream << setprecision(3) << "VOLT:OFFS" << chan << o << endl;
+    dstream << setprecision(3) << "VOLT:OFFS" << chan << " " << o << endl;
     return *this;
 }
 

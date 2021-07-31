@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <enums.h>
+#include <DG1022/enums.h>
 
 template<class T>
 class smanip;
