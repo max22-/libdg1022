@@ -7,7 +7,7 @@ lib/libdg1022.so: lib/libdg1022.o lib/devicestream.o
 lib/libdg1022.o: include/DG1022.h src/DG1022.cpp include/enums.h
 	gcc -c -fPIC -Iinclude -Isrc -Wall src/DG1022.cpp -o lib/libdg1022.o
 
-lib/devicestream.o: src/devicestream.h src/devicestream.cpp include/enums.h
+lib/devicestream.o: include/devicestream.h src/devicestream.cpp include/enums.h
 	gcc -c -fPIC -Iinclude -Isrc -Wall src/devicestream.cpp -o lib/devicestream.o
 
 examples: lib/libdg1022.so
