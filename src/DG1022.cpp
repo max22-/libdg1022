@@ -32,6 +32,11 @@ DG1022& DG1022::setVoltage(float v, Channel chan) {
     return *this;
 }
 
+DG1022& DG1022::setOffset(float o, Channel chan) {
+    dstream << setprecision(3) << "VOLT:OFFS" << chan << o << endl;
+    return *this;
+}
+
 DG1022& DG1022::setPhase(float p, Channel chan) {
     dstream << setprecision(1) << "PHAS" << chan << " " << p << endl;
     return *this;
