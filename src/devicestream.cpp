@@ -85,7 +85,6 @@ DeviceStream& DeviceStream::operator<<(smanip<T> m) {
 }
 
 DeviceStream& endl(DeviceStream& dstrm) {
-    std::cout << dstrm.buffer.str() << std::endl;
     dstrm.file << dstrm.buffer.str() << std::endl;
     dstrm.buffer.str("");
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
